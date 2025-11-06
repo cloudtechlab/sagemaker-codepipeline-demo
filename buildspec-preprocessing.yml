@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Preprocessing phase started"
+      - python --version
+      - pip --version
+      - aws --version
+      
+  build:
+    commands:
+      - echo "Installing dependencies..."
+      - cd training
+      - pip install -r requirements.txt -t .
+      - cd ..
+      
+  post_build:
+    commands:
+      - echo "Uploading training code to S3..."
+      - aws s3 cp training s3://$ARTIFACT_BUCKET/source/training/ --recursive
+      - echo "Preprocessing completed on `date`"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: .

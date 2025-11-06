@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Training phase started"
+      - chmod +x scripts/train_model.sh
+      
+  build:
+    commands:
+      - echo "Starting SageMaker training job..."
+      - ./scripts/train_model.sh
+      
+  post_build:
+    commands:
+      - echo "Training pipeline completed on `date`"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: .
