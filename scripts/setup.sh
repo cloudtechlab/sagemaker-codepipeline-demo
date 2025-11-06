@@ -7,7 +7,7 @@ STACK_NAME="sagemaker-pipeline-demo"
 GITHUB_OWNER="cloudtechlab"
 GITHUB_REPO="sagemaker-codepipeline-demo"
 GITHUB_BRANCH="master"
-GITHUB_TOKEN="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"
+GITHUB_TOKEN=""
 REGION="us-east-1"
 
 # Check if GitHub token is provided
